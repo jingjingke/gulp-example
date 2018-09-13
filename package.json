@@ -1,0 +1,18 @@
+{
+  "name": "gulp-example",
+  "version": "1.0.0",
+  "description": "gulp example",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp,gulpfile,gulp-example"
+  ],
+  "author": "ziyan",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-htmlmin": "^5.0.1"
+  }
+}
