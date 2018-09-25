@@ -1,8 +1,8 @@
 html {
-  font-size: 12px;
+  font-size: 14px;
 }
 
-body, div, h1, h2, h3, h4, h5, h6, p, ul, li {
+body, div, h1, h2, h3, h4, h5, h6, p, ul, li, img {
   padding: 0;
   margin: 0;
   border: 0;
@@ -18,13 +18,12 @@ a {
 }
 
 .container {
-  width: 980px;
+  width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .header {
-  font-size: 14px;
   line-height: 50px;
   height: 50px;
   overflow: hidden;
@@ -38,7 +37,7 @@ a {
 .header h1 {
   font-size: 20px;
   font-weight: normal;
-  padding: 0 20px;
+  padding: 0 5px;
 }
 
 .header .nav {
@@ -62,4 +61,100 @@ a {
 
 .header .nav a {
   padding: 0 20px;
+}
+
+.workList {
+  margin-left: -16px;
+  overflow: hidden;
+}
+
+.workList li {
+  float: left;
+  width: 262px;
+  margin-left: 16px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  position: relative;
+  padding: 15px 12px 20px;
+  display: inline;
+}
+
+.workList h3 {
+  margin-top: 5px;
+  font-size: 16px;
+  height: 2em;
+  line-height: 2em;
+  overflow: hidden;
+}
+
+.workList .title {
+  color: #333;
+}
+
+.workList .title:hover {
+  color: #5cb85c;
+}
+
+.workList p {
+  color: #666;
+  margin-top: 5px;
+  line-height: 1.5em;
+  height: 3em;
+  overflow: hidden;
+}
+
+.workList img {
+  width: 262px;
+  height: 156px;
+}
+
+.workList .btn {
+  display: block;
+  color: #5cb85c;
+  width: 100px;
+  text-align: center;
+  line-height: 32px;
+  border: 1px solid #5cb85c;
+  border-radius: 4px;
+  margin-top: 15px;
+}
+
+.workList .btn:hover {
+  color: #fff;
+  background: #5cb85c;
+}
+
+.content-head {
+  padding: 15px 0;
+  overflow: hidden;
+}
+
+.content-head h2 {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: normal;
+}
+
+.content-head .tag {
+  float: right;
+  white-space: nowrap;
+}
+
+.content-head .tag li {
+  display: inline;
+}
+
+.content-head .tag a {
+  display: inline-block;
+  color: #666;
+  line-height: 36px;
+  border-radius: 8px;
+  padding: 0 15px;
+  margin-left: 3px;
+  background: #f2f2f2;
+}
+
+.content-head .tag a:hover {
+  color: #222;
+  background: #dbefdb;
 }

@@ -4,7 +4,8 @@ var gulp = require('gulp'),
     postcss = require('gulp-postcss'),
     autoprefixer = require('autoprefixer'),
     del = require('del'),
-    csso = require('gulp-csso');
+    csso = require('gulp-csso'),
+    imagemin = require('gulp-imagemin');
 
 
 gulp.task('html', function () {
@@ -58,4 +59,15 @@ gulp.task('mincss', function () {
         .pipe(gulp.dest('dist/css'));
 })
 
-gulp.task('build',['html','mincss'])
+gulp.task('imagemin', function () {
+    return gulp.src('src/images/*.{png,jpg,gif,svg}')
+        .pipe(imagemin({
+            // optimizationLevel: 7,   // 优化等级0-7，默认3
+            // progressive: true,      // 无损压缩jpg图片，默认false
+            // interlaced: true,       // 隔行扫描gif进行渲染，默认false
+            // multipass:true         // 优化svg，默认false
+        }))
+        .pipe(gulp.dest('dist/images'))
+})
+
+gulp.task('build', ['html', 'mincss', 'imagemin'])

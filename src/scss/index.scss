@@ -1,8 +1,8 @@
 html {
-  font-size: 12px;
+  font-size: 14px;
 }
 
-body, div, h1, h2, h3, h4, h5, h6, p, ul, li {
+body, div, h1, h2, h3, h4, h5, h6, p, ul, li, img {
   padding: 0;
   margin: 0;
   border: 0;
@@ -18,13 +18,12 @@ a {
 }
 
 .container {
-  width: 980px;
+  width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .header {
-  font-size: 14px;
   line-height: 50px;
   height: 50px;
   overflow: hidden;
@@ -35,7 +34,7 @@ a {
   h1 {
     font-size: 20px;
     font-weight: normal;
-    padding: 0 20px;
+    padding: 0 5px;
   }
   .nav {
     float: right;
@@ -55,3 +54,89 @@ a {
     }
   }
 }
+
+.workList {
+  margin-left: -16px;
+  overflow: hidden;
+  li {
+    float: left;
+    width: 262px;
+    margin-left: 16px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    position: relative;
+    padding: 15px 12px 20px;
+    display: inline;
+  }
+  h3 {
+    margin-top: 5px;
+    font-size: 16px;
+    height: 2em;
+    line-height: 2em;
+    overflow: hidden;
+  }
+  .title {
+    color: #333;
+    &:hover {
+      color: #5cb85c;
+    }
+  }
+  p {
+    color: #666;
+    margin-top: 5px;
+    line-height: 1.5em;
+    height: 3em;
+    overflow: hidden;
+
+  }
+  img {
+    width: 262px;
+    height: 156px;
+  }
+  .btn {
+    display: block;
+    color: #5cb85c;
+    width: 100px;
+    text-align: center;
+    line-height: 32px;
+    border: 1px solid #5cb85c;
+    border-radius: 4px;
+    margin-top: 15px;
+    &:hover {
+      color: #fff;
+      background: #5cb85c;
+    }
+  }
+}
+
+.content-head {
+  padding: 15px 0;
+  overflow: hidden;
+  h2 {
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: normal;
+  }
+  .tag {
+    float: right;
+    white-space: nowrap;
+    li {
+      display: inline;
+    }
+    a {
+      display: inline-block;
+      color: #666;
+      line-height: 36px;
+      border-radius: 8px;
+      padding: 0 15px;
+      margin-left: 3px;
+      background: #f2f2f2;
+      &:hover {
+        color: #222;
+        background: #dbefdb;
+      }
+    }
+  }
+}
+
+
