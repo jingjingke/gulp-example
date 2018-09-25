@@ -1,0 +1,65 @@
+html {
+  font-size: 12px;
+}
+
+body, div, h1, h2, h3, h4, h5, h6, p, ul, li {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.container {
+  width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  font-size: 14px;
+  line-height: 50px;
+  height: 50px;
+  overflow: hidden;
+  background: #222;
+}
+
+.header, .header a {
+  color: #fff;
+}
+
+.header h1 {
+  font-size: 20px;
+  font-weight: normal;
+  padding: 0 20px;
+}
+
+.header .nav {
+  float: right;
+  white-space: nowrap;
+}
+
+.header .nav li {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.header .nav li:hover {
+  background: #000;
+}
+
+.header .nav li.on {
+  -webkit-box-shadow: 0 -2px 0 #5cb85c inset;
+          box-shadow: 0 -2px 0 #5cb85c inset;
+}
+
+.header .nav a {
+  padding: 0 20px;
+}

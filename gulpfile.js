@@ -1,5 +1,10 @@
 var gulp = require('gulp'),
-    htmlmin = require('gulp-htmlmin');
+    htmlmin = require('gulp-htmlmin'),
+    sass = require('gulp-sass'),
+    postcss = require('gulp-postcss'),
+    autoprefixer = require('autoprefixer'),
+    del = require('del');
+
 
 gulp.task('html', function () {
     return gulp.src('src/html/*.html')
@@ -15,3 +20,35 @@ gulp.task('html', function () {
         }))
         .pipe(gulp.dest('dist/html'));
 });
+
+
+gulp.task('scss', function () {
+    return gulp.src('src/scss/*.scss')
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }))
+        .pipe(postcss([autoprefixer({
+            browsers: [
+                'last 7 versions',
+                'chrome >= 34',
+                'safari >= 6',
+                'ios >= 6',
+                'android >= 4.4',
+                'Firefox >= 20'
+            ]
+        })]))
+        .pipe(gulp.dest('src/css'));
+})
+
+gulp.task('dev',function () {
+    var watcher = gulp.watch('src/scss' + '/*.scss',['scss']);
+    watcher.on('change',function (event) {
+        // console.log('Event type: ' + event.type);
+        // console.log('Event path: ' + event.path);
+        if ("deleted" === event.type) {
+            var fileName = event.path.substring(event.path.lastIndexOf("\\"), event.path.indexOf("\."));
+            del.sync('src/css/' + fileName + '.css');
+        }
+    });
+})
+
