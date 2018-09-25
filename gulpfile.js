@@ -3,7 +3,8 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     postcss = require('gulp-postcss'),
     autoprefixer = require('autoprefixer'),
-    del = require('del');
+    del = require('del'),
+    csso = require('gulp-csso');
 
 
 gulp.task('html', function () {
@@ -20,7 +21,6 @@ gulp.task('html', function () {
         }))
         .pipe(gulp.dest('dist/html'));
 });
-
 
 gulp.task('scss', function () {
     return gulp.src('src/scss/*.scss')
@@ -40,9 +40,9 @@ gulp.task('scss', function () {
         .pipe(gulp.dest('src/css'));
 })
 
-gulp.task('dev',function () {
-    var watcher = gulp.watch('src/scss' + '/*.scss',['scss']);
-    watcher.on('change',function (event) {
+gulp.task('dev', function () {
+    var watcher = gulp.watch('src/scss' + '/*.scss', ['scss']);
+    watcher.on('change', function (event) {
         // console.log('Event type: ' + event.type);
         // console.log('Event path: ' + event.path);
         if ("deleted" === event.type) {
@@ -52,3 +52,10 @@ gulp.task('dev',function () {
     });
 })
 
+gulp.task('mincss', function () {
+    return gulp.src('src/css/*.css')
+        .pipe(csso())
+        .pipe(gulp.dest('dist/css'));
+})
+
+gulp.task('build',['html','mincss'])
