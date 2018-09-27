@@ -5,7 +5,8 @@ var gulp = require('gulp'),
     autoprefixer = require('autoprefixer'),
     del = require('del'),
     csso = require('gulp-csso'),
-    imagemin = require('gulp-imagemin');
+    imagemin = require('gulp-imagemin'),
+    uglify = require('gulp-uglify');
 
 
 gulp.task('html', function () {
@@ -62,12 +63,27 @@ gulp.task('mincss', function () {
 gulp.task('imagemin', function () {
     return gulp.src('src/images/*.{png,jpg,gif,svg}')
         .pipe(imagemin({
-            // optimizationLevel: 7,   // 优化等级0-7，默认3
-            // progressive: true,      // 无损压缩jpg图片，默认false
-            // interlaced: true,       // 隔行扫描gif进行渲染，默认false
-            // multipass:true         // 优化svg，默认false
+            // optimizationLevel: 7,    // 优化等级0-7，默认3
+            // progressive: true,       // 无损压缩jpg图片，默认false
+            // interlaced: true,        // 隔行扫描gif进行渲染，默认false
+            // multipass:true           // 优化svg，默认false
         }))
         .pipe(gulp.dest('dist/images'))
 })
 
-gulp.task('build', ['html', 'mincss', 'imagemin'])
+gulp.task('js', function () {
+    return gulp.src(['src/js/*.js','!src/js/test*.js'])
+        .pipe(uglify({                                          //参考：https://github.com/mishoo/UglifyJS2#minify-options
+            ie8: true,                                          //是否支持IE8，默认false
+            compress:{
+                drop_console:true                               //移除console，默认false
+            },
+            // mangle: false,                                   // 修改变量名，默认true
+            mangle: {
+                reserved: ['require', 'exports', 'module', '$'] //修改变量名不为false时，排除混淆关键字
+            }
+        }))
+        .pipe(gulp.dest('dist/js'));
+})
+
+gulp.task('build', ['html', 'mincss', 'imagemin', 'js'])
