@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     del = require('del'),
     csso = require('gulp-csso'),
     imagemin = require('gulp-imagemin'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    babel = require('gulp-babel');
 
 
 gulp.task('html', function () {
@@ -45,8 +46,8 @@ gulp.task('scss', function () {
 gulp.task('dev', function () {
     var watcher = gulp.watch('src/scss' + '/*.scss', ['scss']);
     watcher.on('change', function (event) {
-        // console.log('Event type: ' + event.type);
-        // console.log('Event path: ' + event.path);
+        console.log('Event type: ' + event.type);
+        console.log('Event path: ' + event.path);
         if ("deleted" === event.type) {
             var fileName = event.path.substring(event.path.lastIndexOf("\\"), event.path.indexOf("\."));
             del.sync('src/css/' + fileName + '.css');
@@ -73,6 +74,9 @@ gulp.task('imagemin', function () {
 
 gulp.task('js', function () {
     return gulp.src(['src/js/*.js','!src/js/test*.js'])
+        .pipe(babel({               //参考：https://babeljs.io/docs/en/options
+            presets: ['@babel/env']
+        }))
         .pipe(uglify({                                          //参考：https://github.com/mishoo/UglifyJS2#minify-options
             ie8: true,                                          //是否支持IE8，默认false
             compress:{
